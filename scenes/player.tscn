@@ -7,9 +7,13 @@
 [ext_resource type="Script" uid="uid://vbwf5mowwvls" path="res://scripts/healthComponent.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://b6thjvew576oj" path="res://scripts/attackComponent.gd" id="6_fjrip"]
 [ext_resource type="Script" uid="uid://daw3uxalgqddl" path="res://scripts/label.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://b22y1q1uj4ucu" path="res://scripts/hurtBox.gd" id="7_smehm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
+size = Vector2(80, 80)
 
 [node name="player" type="CharacterBody2D" unique_id=884599285 groups=["player"]]
 script = ExtResource("1_qhqgy")
@@ -19,6 +23,7 @@ player_stats = ExtResource("2_qlg0r")
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 1, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=567661752]
 position = Vector2(20, 20)
@@ -38,7 +43,18 @@ metadata/_custom_type_script = "uid://xu7jhltf84wa"
 script = ExtResource("5_qlg0r")
 metadata/_custom_type_script = "uid://vbwf5mowwvls"
 
-[node name="attackComponent" type="Node" parent="." unique_id=655837427]
+[node name="hurtBox" type="Area2D" parent="." unique_id=2024652866 node_paths=PackedStringArray("hurt_area", "attack_component")]
+script = ExtResource("7_smehm")
+hurt_area = NodePath(".")
+attack_component = NodePath("attackComponent")
+group = "enemy"
+metadata/_custom_type_script = "uid://b22y1q1uj4ucu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" unique_id=1798409548]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_smehm")
+
+[node name="attackComponent" type="Node" parent="hurtBox" unique_id=655837427]
 script = ExtResource("6_fjrip")
 metadata/_custom_type_script = "uid://b6thjvew576oj"
 
@@ -48,3 +64,4 @@ offset_right = 40.0
 offset_bottom = -3.0
 script = ExtResource("6_tuyoq")
 stats = ExtResource("2_qlg0r")
+metadata/_edit_use_anchors_ = true
