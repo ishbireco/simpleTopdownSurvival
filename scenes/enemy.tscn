@@ -3,9 +3,16 @@
 [ext_resource type="Script" uid="uid://cqyfe76dkgxy1" path="res://scripts/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Resource" uid="uid://cpnj3pbghjgfq" path="res://resources/enemy_stats.tres" id="2_5uy6h"]
 [ext_resource type="Script" uid="uid://xu7jhltf84wa" path="res://scripts/movementScipt.gd" id="3_c4w8v"]
+[ext_resource type="Script" uid="uid://vbwf5mowwvls" path="res://scripts/healthComponent.gd" id="4_5uy6h"]
+[ext_resource type="Script" uid="uid://betf0sfl3nqp4" path="res://scripts/enemy_label.gd" id="5_c4w8v"]
+[ext_resource type="Script" uid="uid://b6thjvew576oj" path="res://scripts/attackComponent.gd" id="5_xwavj"]
+[ext_resource type="Script" uid="uid://b22y1q1uj4ucu" path="res://scripts/hurtBox.gd" id="6_nenq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tegq"]
 size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md484"]
+size = Vector2(80, 80)
 
 [node name="enemy" type="CharacterBody2D" unique_id=1360353982]
 script = ExtResource("1_4ra3w")
@@ -24,3 +31,28 @@ shape = SubResource("RectangleShape2D_8tegq")
 script = ExtResource("3_c4w8v")
 mover = NodePath("..")
 metadata/_custom_type_script = "uid://xu7jhltf84wa"
+
+[node name="healthComponent" type="Node" parent="." unique_id=49947038]
+script = ExtResource("4_5uy6h")
+metadata/_custom_type_script = "uid://vbwf5mowwvls"
+
+[node name="hurtBox" type="Area2D" parent="." unique_id=1972225669 node_paths=PackedStringArray("hurt_area", "attack_component")]
+script = ExtResource("6_nenq2")
+hurt_area = NodePath(".")
+attack_component = NodePath("attackComponent")
+metadata/_custom_type_script = "uid://b22y1q1uj4ucu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox" unique_id=620693555]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_md484")
+
+[node name="attackComponent" type="Node" parent="hurtBox" unique_id=1572101159]
+script = ExtResource("5_xwavj")
+metadata/_custom_type_script = "uid://b6thjvew576oj"
+
+[node name="Label" type="Label" parent="." unique_id=2127168615]
+offset_top = -27.0
+offset_right = 40.0
+offset_bottom = -4.0
+script = ExtResource("5_c4w8v")
+enemy_stats = ExtResource("2_5uy6h")

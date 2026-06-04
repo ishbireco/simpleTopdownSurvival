@@ -7,5 +7,6 @@ script = ExtResource("1_umnsp")
 health = 50.0
 max_health = 50.0
 speed = 150.0
-damage = 10.0
+damage_given = 10.0
+damage_taken = 20.0
 metadata/_custom_type_script = "uid://b2teugyx4dwfj"
