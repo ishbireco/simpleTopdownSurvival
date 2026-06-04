@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dbr02e72r1p2m"]
+
+[ext_resource type="Script" uid="uid://blqjix040i7rt" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://1dsebuukgsuu" path="res://scripts/inputComponent.gd" id="2_dqkch"]
+[ext_resource type="Resource" uid="uid://bfp50gx0ao18w" path="res://resources/player_stats.tres" id="2_qlg0r"]
+[ext_resource type="Script" uid="uid://xu7jhltf84wa" path="res://scripts/movementScipt.gd" id="3_qlg0r"]
+[ext_resource type="Script" uid="uid://vbwf5mowwvls" path="res://scripts/healthComponent.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://b6thjvew576oj" path="res://scripts/attackComponent.gd" id="6_fjrip"]
+[ext_resource type="Script" uid="uid://daw3uxalgqddl" path="res://scripts/label.gd" id="6_tuyoq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
+size = Vector2(40, 40)
+
+[node name="player" type="CharacterBody2D" unique_id=884599285 groups=["player"]]
+script = ExtResource("1_qhqgy")
+player_stats = ExtResource("2_qlg0r")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1022347984]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=567661752]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_u8vuu")
+
+[node name="inputCompnent" type="Node" parent="." unique_id=1819015292 node_paths=PackedStringArray("mover")]
+script = ExtResource("2_dqkch")
+mover = NodePath("..")
+metadata/_custom_type_script = "uid://1dsebuukgsuu"
+
+[node name="movementComponent" type="Node" parent="." unique_id=744402848 node_paths=PackedStringArray("mover")]
+script = ExtResource("3_qlg0r")
+mover = NodePath("..")
+metadata/_custom_type_script = "uid://xu7jhltf84wa"
+
+[node name="healthComponent" type="Node" parent="." unique_id=1099756310]
+script = ExtResource("5_qlg0r")
+metadata/_custom_type_script = "uid://vbwf5mowwvls"
+
+[node name="attackComponent" type="Node" parent="." unique_id=655837427]
+script = ExtResource("6_fjrip")
+metadata/_custom_type_script = "uid://b6thjvew576oj"
+
+[node name="Label" type="Label" parent="." unique_id=1905822054]
+offset_top = -26.0
+offset_right = 40.0
+offset_bottom = -3.0
+script = ExtResource("6_tuyoq")
+stats = ExtResource("2_qlg0r")

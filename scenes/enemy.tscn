@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ct1uhaq1thbbs"]
+
+[ext_resource type="Script" uid="uid://cqyfe76dkgxy1" path="res://scripts/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Resource" uid="uid://cpnj3pbghjgfq" path="res://resources/enemy_stats.tres" id="2_5uy6h"]
+[ext_resource type="Script" uid="uid://xu7jhltf84wa" path="res://scripts/movementScipt.gd" id="3_c4w8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tegq"]
+size = Vector2(40, 40)
+
+[node name="enemy" type="CharacterBody2D" unique_id=1360353982]
+script = ExtResource("1_4ra3w")
+enemy_stats = ExtResource("2_5uy6h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1376349022]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1218974593]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_8tegq")
+
+[node name="movementComponent" type="Node" parent="." unique_id=729759785 node_paths=PackedStringArray("mover")]
+script = ExtResource("3_c4w8v")
+mover = NodePath("..")
+metadata/_custom_type_script = "uid://xu7jhltf84wa"
