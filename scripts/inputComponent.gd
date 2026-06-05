@@ -2,7 +2,7 @@ class_name inputCompnent
 extends Node
 
 @export var mover: CharacterBody2D
-@onready var attack_component: attackComponent = $'../attackComponent'
+@onready var attack_component: attackComponent = %attackComponent
 var direction: Vector2
 
 func get_input(stats):

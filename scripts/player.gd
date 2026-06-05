@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-@onready var input_compnent: inputCompnent = $inputCompnent
-@onready var movement_component: movementComponent = $movementComponent
-@onready var health_component: healthComponent = $healthComponent
-@onready var attack_component: attackComponent 
+@onready var input_compnent: inputCompnent = %inputCompnent
+@onready var movement_component: movementComponent = %movementComponent
+@onready var health_component: healthComponent = %healthComponent
+@onready var attack_component: attackComponent = %attackComponent
 @onready var hurt_box: hurtBox = $hurtBox
 @export var player_stats: stats
 
 func _ready() -> void:
+	health_component.give_health(player_stats)
 	health_component.give_health(player_stats)
 	var timer = Timer.new()
 	timer.wait_time = 1.0
@@ -15,7 +16,6 @@ func _ready() -> void:
 	add_child(timer)
 	timer.start()
 	timer.timeout.connect(_on_timer_timeout)
-
 #called every frame
 func _process(_delta):
 	movement_component.mover = input_compnent.mover

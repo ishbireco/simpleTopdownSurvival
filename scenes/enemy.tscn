@@ -28,15 +28,18 @@ position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_8tegq")
 
 [node name="movementComponent" type="Node" parent="." unique_id=729759785 node_paths=PackedStringArray("mover")]
+unique_name_in_owner = true
 script = ExtResource("3_c4w8v")
 mover = NodePath("..")
 metadata/_custom_type_script = "uid://xu7jhltf84wa"
 
 [node name="healthComponent" type="Node" parent="." unique_id=49947038]
+unique_name_in_owner = true
 script = ExtResource("4_5uy6h")
 metadata/_custom_type_script = "uid://vbwf5mowwvls"
 
 [node name="hurtBox" type="Area2D" parent="." unique_id=1972225669 node_paths=PackedStringArray("hurt_area", "attack_component")]
+unique_name_in_owner = true
 script = ExtResource("6_nenq2")
 hurt_area = NodePath(".")
 attack_component = NodePath("attackComponent")
@@ -48,6 +51,7 @@ position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_md484")
 
 [node name="attackComponent" type="Node" parent="hurtBox" unique_id=1572101159]
+unique_name_in_owner = true
 script = ExtResource("5_xwavj")
 metadata/_custom_type_script = "uid://b6thjvew576oj"
 
